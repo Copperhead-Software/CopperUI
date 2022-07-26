@@ -1,13 +1,12 @@
 import pyfiglet # used for banner
 from colorama import Fore as colour, Back as back # used for text functions 
-import itertools # used for waiting stuff
-import threading # used for waiting stuff
+import itertools, threading # used for waiting stuff
 from time import sleep as Time # used for waiting...
 import sys # used for stdout
 import asyncio # used for app class, as well as async functions 
 from playsound import playsound # its morbin time
 from datetime import datetime # for clock function
-from errors import *
+from .errors import *
 
 # color variables because of course colorama's color names have to be in caps
 red = colour.RED
@@ -30,7 +29,7 @@ back_white = back.WHITE
 back_magenta = back.MAGENTA
 reset_back = back.RESET
 
-def error(text, stripped):
+def error(text, stripped: bool = True):
     """makes an error print"""
     if stripped == False:
         print(f"❌ details: {text}")
