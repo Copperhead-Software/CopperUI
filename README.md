@@ -25,6 +25,6 @@ CopperApp is a wrapper to help make organizing your apps more easily
 Through pip:
     <br>``pip install CopperUI``
 
-Manual build:
+[LEGACY] Manual build:
     <br>    run setup.py
     <br>    add copperhead.py to root directory of project. (or wherever you want it.)
