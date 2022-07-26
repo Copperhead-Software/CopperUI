@@ -1,18 +1,10 @@
 class NameSpace(Exception):
     class BackgroundColorError(Exception):
-        print("""
-        for background color please use background specified colors 
-
-        ex: back_red 
-        """)
+        """this is called when a user calls a foreground color in the case of a background usage"""
         pass
 
     class ForegroundColorError(Exception):
-        print("""
-        for foreground (text) color please use standard colors, without the 'back' prefix.
-
-        ex: red
-        """)
+        """this is called when a user calls a background color in the case of a foreground usage"""
         pass
 
 class ArgumentError(Exception):

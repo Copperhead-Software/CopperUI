@@ -46,9 +46,17 @@ def passed(text, stripped: bool = True):
 def prompt(color = reset_color, text = "press enter to continue",*, background = reset_back):
     """creates a no-input continue prompt."""
     if background == red or yellow or black or green or white or magenta or reset_color:
-        raise NameSpace.BackgroundColorError
+        raise NameSpace.BackgroundColorError("""
+        for background color please use background specified colors 
+
+        ex: back_red 
+        """)
     if color == back_white or back_green or back_black or back_magenta or back_blue or back_red or reset_back:
-        raise NameSpace.ForegroundColorError
+        raise NameSpace.ForegroundColorError("""
+        for foreground (text) color please use standard colors, without the 'back' prefix.
+
+        ex: red
+        """)
     value = input(background + color + f"{text} " + reset_back)
     if value == "":
         return
@@ -59,27 +67,51 @@ def prompt(color = reset_color, text = "press enter to continue",*, background =
 def banner(color = green, *, text = "CopperHead", font=DEFAULT_FONT, background = reset_back, end="\n"):
     """creates a banner for your application"""
     if background == red or yellow or black or green or white or magenta or reset_color:
-        raise NameSpace.BackgroundColorError
+        raise NameSpace.BackgroundColorError("""
+        for background color please use background specified colors 
+
+        ex: back_red 
+        """)
     if color == back_white or back_green or back_black or back_magenta or back_blue or back_red or reset_back:
-        raise NameSpace.ForegroundColorError
+        raise NameSpace.ForegroundColorError("""
+        for foreground (text) color please use standard colors, without the 'back' prefix.
+
+        ex: red
+        """)
     banner = pyfiglet.figlet_format(text, font)
     print(background + color + banner)
     print(reset_color + reset_back, end='\n')
 
 def color_print(color, text, background = reset_back):
     if background == red or yellow or black or green or white or magenta or reset_color:
-        raise NameSpace.BackgroundColorError
+        raise NameSpace.BackgroundColorError("""
+        for background color please use background specified colors 
+
+        ex: back_red 
+        """)
     if color == back_white or back_green or back_black or back_magenta or back_blue or back_red or reset_back:
-        raise NameSpace.ForegroundColorError
+        raise NameSpace.ForegroundColorError("""
+        for foreground (text) color please use standard colors, without the 'back' prefix.
+
+        ex: red
+        """)
     """makes colored text"""
     print(background + color + text + white + reset_back)
 
 async def loading(color=reset_color, text="loading...", time=1, background = reset_back):
     """makes a little loading icon next to your inputed text, for however long you'd like it to wait."""
     if background == red or yellow or black or green or white or magenta or reset_color:
-        raise NameSpace.BackgroundColorError
+        raise NameSpace.BackgroundColorError("""
+        for background color please use background specified colors 
+
+        ex: back_red 
+        """)
     if color == back_white or back_green or back_black or back_magenta or back_blue or back_red or reset_back:
-        raise NameSpace.ForegroundColorError
+        raise NameSpace.ForegroundColorError("""
+        for foreground (text) color please use standard colors, without the 'back' prefix.
+
+        ex: red
+        """)
     done = False
     def animate():
         for c in itertools.cycle(['|', '/', '-', '\\']):
@@ -121,9 +153,17 @@ async def clock(format=24, color = reset_color, background = reset_back):
         format: this decides if you want to print with the 12 or 24 hour time format
     """
     if background == red or yellow or black or green or white or magenta or reset_color:
-        raise NameSpace.BackgroundColorError
+        raise NameSpace.BackgroundColorError("""
+        for background color please use background specified colors 
+
+        ex: back_red 
+        """)
     if color == back_white or back_green or back_black or back_magenta or back_blue or back_red or reset_back:
-        raise NameSpace.ForegroundColorError
+        raise NameSpace.ForegroundColorError("""
+        for foreground (text) color please use standard colors, without the 'back' prefix.
+
+        ex: red
+        """)
     else:
         pass
 
