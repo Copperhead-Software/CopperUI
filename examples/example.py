@@ -1,5 +1,5 @@
 from sys import argv as arg
-from copperhead import *
+from CopperUI import *
 
 async def menu():
     banner(color=green, text="Copperhead", background=green)
