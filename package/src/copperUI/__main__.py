@@ -1,8 +1,9 @@
-from .copperhead import *
+import copperhead
 from sys import argv as arg
 from colorama import Back
 from pyfiglet import FontNotFound
 import os
+import random
 
 fonts = ["1943____",
 "3-d",
@@ -431,9 +432,9 @@ fonts = ["1943____",
 "zone7__"]
 
 def list():
-    prompt(color=red, text="this command lists *all* fonts usable with the banner function. the list is very long.\n\n press enter to continue...")
+    copperhead.prompt(color=copperhead.red, text="this command lists *all* fonts usable with the banner function. the list is very long.\n\n press enter to continue...")
     print("\n".join(fonts))
-    prompt()
+    copperhead.prompt()
 
 def help():
     print(f"""
@@ -459,7 +460,18 @@ def help():
         prompt documentation:
             prompt takes **no input** it will return a warning if the user gives input. this is to reduce confusion with inputs. 
     """)
-    prompt()
+    copperhead.prompt()
+
+colors = {
+    1: copperhead.red,
+    2: copperhead.green,
+    3: copperhead.blue,
+    4: copperhead.black,
+    5: copperhead.magenta,
+    6: copperhead.reset_color,
+    7: copperhead.white,
+    8: copperhead.yellow
+}
 
 if arg[1] == "-f":
     list()
@@ -468,13 +480,15 @@ elif arg[1] == "-h":
 elif arg[1] == "-b":
     for f in fonts:
         try:
-            banner(text="Sample", font=f)
-            prompt(color=red, text="press enter for the next font.")
+            val = random.randint(1, 8)
+            print(colors[val]+ "hello!")
+            copperhead.banner(color = colors[val], text="Sample", font=f)
+            copperhead.prompt(color=copperhead.red, text="press enter for the next font.")
         except FontNotFound:
-            exit()
+            pass
 elif arg[1] == "--debug":
     print(os.name)
 elif arg[1] == "-r":
-    rainbow_print(text="hello!")
+    copperhead.rainbow_print(text="hello!")
 else:
     print("wrong arg! use -h for a command list.")

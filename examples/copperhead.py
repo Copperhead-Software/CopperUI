@@ -6,6 +6,7 @@ import sys # used for stdout
 import asyncio # used for app class, as well as async functions 
 from playsound import playsound # its morbin time
 from datetime import datetime # for clock function
+import errors
 
 # color variables because of course colorama's color names have to be in caps
 red = colour.RED
@@ -103,21 +104,22 @@ async def clock(format=24, color = reset_color, background = reset_back):
     args:
         format: this decides if you want to print with the 12 or 24 hour time format
     """
-    if format == 24:
-        while True:
-            now = datetime.now()
-            current_time = now.strftime("%H:%M")
-            sys.stdout.write(str(background + color + current_time) + '\r')
-            sys.stdout.flush()
-    if format == 12:
-        while True:
-            now = datetime.now()
-            current_time = now.strftime("%H:%M")
-            hours, minutes = current_time.split(':')
-            hours = int(hours); minutes = int(minutes)
-            if hours > 12:
-                sys.stdout.write(background + color + f"{hours-12}:{minutes}" + '\r')
-                sys.stdout.flush()
+    print("clock")
+    # if format == 24:
+    #     while True:
+    #         now = datetime.now()
+    #         current_time = now.strftime("%H:%M")
+    #         sys.stdout.write(str(background + color + current_time) + '\r')
+    #         sys.stdout.flush()
+    # if format == 12:
+    #     while True:
+    #         now = datetime.now()
+    #         current_time = now.strftime("%H:%M")
+    #         hours, minutes = current_time.split(':')
+    #         hours = int(hours); minutes = int(minutes)
+    #         if hours > 12:
+    #             sys.stdout.write(background + color + f"{hours-12}:{minutes}" + '\r')
+    #             sys.stdout.flush()
 
 class CopperApp():
     """App organization functions"""
