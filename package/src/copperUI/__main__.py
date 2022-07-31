@@ -1,5 +1,5 @@
-import copperhead
-from errors import *
+from .copperhead import *
+from .errors import *
 from sys import argv as arg
 from colorama import Back
 from pyfiglet import FontNotFound
@@ -433,9 +433,9 @@ fonts = ["1943____",
 "zone7__"]
 
 def list():
-    copperhead.prompt(color=copperhead.red, text="this command lists *all* fonts usable with the banner function. the list is very long.\n\n press enter to continue...")
+    prompt(color=red, text="this command lists *all* fonts usable with the banner function. the list is very long.\n\n press enter to continue...")
     print("\n".join(fonts))
-    copperhead.prompt()
+    prompt()
 
 def help():
     print(f"""
@@ -461,17 +461,17 @@ def help():
         prompt documentation:
             prompt takes **no input** it will return a warning if the user gives input. this is to reduce confusion with inputs. 
     """)
-    copperhead.prompt()
+    prompt()
 
 colors = {
-    1: copperhead.red,
-    2: copperhead.green,
-    3: copperhead.blue,
-    4: copperhead.black,
-    5: copperhead.magenta,
-    6: copperhead.reset_color,
-    7: copperhead.white,
-    8: copperhead.yellow
+    1: red,
+    2: green,
+    3: blue,
+    4: black,
+    5: magenta,
+    6: reset_color,
+    7: white,
+    8: yellow
 }
 
 try:
@@ -484,14 +484,16 @@ try:
             try:
                 val = random.randint(1, 8)
                 print(colors[val]+ "hello!")
-                copperhead.banner(color = colors[val], text="Sample", font=f)
-                copperhead.prompt(color=copperhead.red, text="press enter for the next font.")
+                banner(color = colors[val], text="Sample", font=f)
+                prompt(color=red, text="press enter for the next font.")
             except FontNotFound:
-                pass
+                continue
+            finally:
+                exit()
     elif arg[1] == "--debug":
         print(os.name) # shhhhh
     elif arg[1] == "-r":
-        copperhead.rainbow_print(text="hello!")
+        rainbow_print(text="hello!")
     else:
         print("wrong arg! use -h for a command list.")
 except IndexError:
