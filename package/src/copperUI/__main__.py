@@ -1,5 +1,9 @@
-from .copperhead import *
-from .errors import *
+try:
+    from .copperhead import *
+    from .errors import *
+except ImportError:
+    from copperhead import *
+    from errors import *
 from sys import argv as arg
 from colorama import Back
 from pyfiglet import FontNotFound
