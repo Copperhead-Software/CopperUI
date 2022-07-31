@@ -1,4 +1,5 @@
 import copperhead
+from errors import *
 from sys import argv as arg
 from colorama import Back
 from pyfiglet import FontNotFound
@@ -455,7 +456,7 @@ def help():
             magenta.
         
         banner documentation:
-            banner has the standard options first, and then font. font options can be found by running {Back.CYAN}python3 -m copperhead -f {Back.RESET}
+            banner has the standard options first, and then font. font options can be found by running {Back.CYAN}python3 -m CopperUI -f {Back.RESET}
 
         prompt documentation:
             prompt takes **no input** it will return a warning if the user gives input. this is to reduce confusion with inputs. 
@@ -473,22 +474,25 @@ colors = {
     8: copperhead.yellow
 }
 
-if arg[1] == "-f":
-    list()
-elif arg[1] == "-h":
-    help()
-elif arg[1] == "-b":
-    for f in fonts:
-        try:
-            val = random.randint(1, 8)
-            print(colors[val]+ "hello!")
-            copperhead.banner(color = colors[val], text="Sample", font=f)
-            copperhead.prompt(color=copperhead.red, text="press enter for the next font.")
-        except FontNotFound:
-            pass
-elif arg[1] == "--debug":
-    print(os.name)
-elif arg[1] == "-r":
-    copperhead.rainbow_print(text="hello!")
-else:
-    print("wrong arg! use -h for a command list.")
+try:
+    if arg[1] == "-f":
+        list()
+    elif arg[1] == "-h":
+        help()
+    elif arg[1] == "-b":
+        for f in fonts:
+            try:
+                val = random.randint(1, 8)
+                print(colors[val]+ "hello!")
+                copperhead.banner(color = colors[val], text="Sample", font=f)
+                copperhead.prompt(color=copperhead.red, text="press enter for the next font.")
+            except FontNotFound:
+                pass
+    elif arg[1] == "--debug":
+        print(os.name) # shhhhh
+    elif arg[1] == "-r":
+        copperhead.rainbow_print(text="hello!")
+    else:
+        print("wrong arg! use -h for a command list.")
+except IndexError:
+    print("supported args: -f, -h, -b, -r")
