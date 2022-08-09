@@ -11,6 +11,9 @@ CopperUI uses shortcuts to change syntax, but comes with extra packages that I f
 
 **all** projects that use project copperhead features (for now just copperUI) will be featured on this repo. you can be featured by @ing [Morgandri1](https://twitter.com/Morgandri1dev), or [Copperhead Software](https://twitter.com/CopperSoftware) on twitter, making an issue, or creating a discussion on github.
 
+SnakeSkin:
+a simple command line text editor by Morgandri1: [SnakeSkin](https://github.com/Morgandri1/SnakeSkin)
+
 <h1>Features:</h1>
 
 CopperUI makes it easier to make TUI applications, starting with personalization. **all** textual functions include a color, background, and text option. this lets you change the color to match everything. 
