@@ -1,6 +1,5 @@
 from CopperUI.copperhead import *
 
-# widgets in v3.0.0
 
 #  __  __           _                 _ _   _        _______   _           
 # |  \/  | __ _  __| | ___  __      _(_) |_| |__    / /___ /  | |__  _   _ 

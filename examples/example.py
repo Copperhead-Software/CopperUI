@@ -24,10 +24,7 @@ def home():
 async def c():
     await clock(format=24)
 
-
 try:
-    if arg[1] == None:
-        print("Hello!!!")
     if arg[1] == "-a":
         CopperApp.run(func=menu, persistent=False)
     if arg[1] == "-s":

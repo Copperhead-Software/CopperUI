@@ -1,11 +1,11 @@
 # CopperUI
-CopperUI is a python package, which is designed to fix my personal grievances. it changes syntax to be easier to read, and makes TUI applications easier to write.
+CopperUI is a python package, which is designed to fix my personal grievances. it changes and shortens syntax to be easier to read, and makes TUI applications easier to write.
 
 <h1>Why CopperUI?</h1>
 CopperUI is a python package made for making simple applications and tools in the command line. 
 
 <h1>How does it work?</h1>
-CopperUI uses shortcuts to change syntax, but comes with extra packages that I find absolutley necessary for most projects.
+CopperUI uses shortcuts to change syntax, but comes with extra packages that I find absolutley necessary for most TUI projects.
 
 <h1>Contributing to the OS community</h1>
 

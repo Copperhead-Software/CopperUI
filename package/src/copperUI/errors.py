@@ -19,6 +19,7 @@ class NameSpace(Exception):
             super().__init__(message)
 
 class ArgumentError(Exception):
+    """called as a result of using an incompatible argument"""
     error = Fore.RED + "Bad argument!" + Fore.RESET
     def __init__(self, message = error):
         super().__init__(message)

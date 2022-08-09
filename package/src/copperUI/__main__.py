@@ -1,9 +1,11 @@
 try:
     from .copperhead import *
     from .errors import *
+    from .colors import *
 except ImportError:
     from copperhead import *
     from errors import *
+    from colors import *
 from sys import argv as arg
 from colorama import Back
 from pyfiglet import FontNotFound
@@ -473,7 +475,7 @@ colors = {
     3: blue,
     4: black,
     5: magenta,
-    6: reset_color,
+    6: terminal,
     7: white,
     8: yellow
 }

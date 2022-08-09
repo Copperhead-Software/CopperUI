@@ -6,25 +6,12 @@ import sys # used for stdout
 import asyncio # used for app class, as well as async functions 
 from playsound import playsound # its morbin time
 from datetime import datetime # for clock function
-
-# color variables because of course colorama's color names have to be in caps
-red = colour.RED
-yellow = colour.YELLOW
-blue = colour.CYAN
-black = colour.BLACK
-green = colour.GREEN
-white = colour.WHITE
-magenta = colour.MAGENTA
-reset_color = colour.RESET
-
-back_red = back.RED
-back_yellow = back.YELLOW
-back_blue = back.BLUE
-back_black = back.BLACK
-back_green = back.GREEN
-back_white = back.WHITE
-back_magenta = back.MAGENTA
-reset_back = back.RESET
+try:    # i don't know relative imports ok? give me a break
+    from .errors import *
+    from .colors import *
+except ImportError:
+    from errors import * 
+    from colors import *
 
 DEFAULT_FONT = 'standard' # pyfiglet banner font
 
@@ -42,26 +29,26 @@ def passed(text, stripped: bool = True):
     else:
         print(f"✅ {text}")
 
-def prompt(color = reset_color, text = "press enter to continue",*, background = reset_back):
+def prompt(color = terminal, text = "press enter to continue",*, background = back_terminal):
     """creates a no-input continue prompt."""
-    value = input(background + color + f"{text} " + reset_back)
+    value = input(background + color + f"{text} " + terminal + back_terminal)
     if value == "":
         return
     else:
         print("No input required!")
         prompt(color, text=text)
 
-def banner(color = green, *, text = "CopperHead", font=DEFAULT_FONT, background = reset_back, end="\n"):
+def banner(color = green, *, text = "CopperHead", font=DEFAULT_FONT, background = back_terminal, end="\n"):
     """creates a banner for your application"""
     banner = pyfiglet.figlet_format(text, font)
     print(background + color + banner)
-    print(reset_color + reset_back, end='\n')
+    print(terminal + back_terminal, end='\n')
 
-def color_print(color, text, background = reset_back):
+def color_print(color, text, background = back_terminal):
     """makes colored text"""
-    print(background + color + text + white + reset_back)
+    print(background + color + text + white + back_terminal)
 
-async def loading(color=reset_color, text="loading...", time=1, background = reset_back):
+async def loading(color=terminal, text="loading...", time=1, background = back_terminal):
     """makes a little loading icon next to your inputed text, for however long you'd like it to wait."""
     done = False
     def animate():
@@ -78,7 +65,7 @@ async def loading(color=reset_color, text="loading...", time=1, background = res
     t.start()
     Time(int(time))
     done = True
-    print(reset_color + reset_back + "\ndone")
+    print(terminal + back_terminal + "\ndone")
 
 def rainbow_print(text="colors", time=5):
     """prints with **flare**"""
@@ -96,9 +83,9 @@ def rainbow_print(text="colors", time=5):
     t.start()
     Time(int(time))
     done = True
-    print(reset_color + reset_back +"\r")
+    print(terminal + back_terminal +"\r")
 
-async def clock(format=24, color = reset_color, background = reset_back):
+async def clock(format=24, color = terminal, background = back_terminal):
     """creates a clock
     args:
         format: this decides if you want to print with the 12 or 24 hour time format
@@ -118,6 +105,8 @@ async def clock(format=24, color = reset_color, background = reset_back):
             if hours > 12:
                 sys.stdout.write(background + color + f"{hours-12}:{minutes}" + '\r')
                 sys.stdout.flush()
+    else:
+        raise ArgumentError("you must use either the 12 or 24 hour time formats.")
 
 class CopperApp():
     """App organization functions"""
@@ -127,7 +116,7 @@ class CopperApp():
         if you use run, make sure to define with async. otherwise, use start. 
         if you dont need async, start is probably your best option.
         Args:
-            func: this is where your main menu should be defined. add the menu's function name here.
+            func: this is where your main menu should be defined. add the menu's function name here. this is what will run upon starting your app
             persistent: this is a true/false arg. this decides if your app will loop.
             startsound: this is where you put the path to a sound file you want to play on startup
         """
@@ -144,7 +133,7 @@ class CopperApp():
                         playsound(startsound)
                     await func()
             except KeyboardInterrupt:
-                print(reset_back + reset_color+"\nexiting... ")
+                print(back_terminal + terminal +"\nexiting... ")
 
         asyncio.run(run_app())
 
@@ -154,7 +143,7 @@ class CopperApp():
         *not async*
 
         Args:
-            Welcome_Screen: this is where your main menu should be defined. add the menu's function name here.
+            func: this is where your main menu should be defined. add the menu's function name here. this is what will run upon starting your app
             persistent: this is a true/false arg. this decides if your app will loop.
             startsound: this is where you put the path to a sound file you want to play on startup"""
         try:
@@ -169,4 +158,4 @@ class CopperApp():
                 func()
                 
         except KeyboardInterrupt:
-            print(reset_back + reset_color+"\nexiting... ")
+            print(back_terminal + terminal + "\nexiting... ")
