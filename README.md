@@ -14,7 +14,7 @@ CopperUI uses shortcuts to change syntax, but comes with extra packages that I f
 <h3>SnakeSkin:</h3>
 a simple command line text editor by Morgandri1: [SnakeSkin](https://github.com/Morgandri1/SnakeSkin)
 <br>
-[![img1.png](https://i.postimg.cc/v8qLgxJL/img1.png)](https://postimg.cc/5jzFDyN6)
+[img1.png](https://i.postimg.cc/v8qLgxJL/img1.png)]
 
 <h1>Features:</h1>
 
