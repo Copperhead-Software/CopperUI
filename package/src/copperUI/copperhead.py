@@ -29,7 +29,7 @@ def passed(text, stripped: bool = True):
     else:
         print(f"✅ {text}")
 
-def prompt(color = terminal, text = "press enter to continue",*, background = back_terminal):
+def prompt(text = "press enter to continue...", color = terminal,*, background = back_terminal):
     """creates a no-input continue prompt."""
     value = input(background + color + f"{text} " + terminal + back_terminal)
     if value == "":
@@ -38,17 +38,17 @@ def prompt(color = terminal, text = "press enter to continue",*, background = ba
         print("No input required!")
         prompt(color, text=text)
 
-def banner(color = green, *, text = "CopperHead", font=DEFAULT_FONT, background = back_terminal, end="\n"):
+def banner(text = "CopperHead", color = green, *, font=DEFAULT_FONT, background = back_terminal, end="\n"):
     """creates a banner for your application"""
     banner = pyfiglet.figlet_format(text, font)
     print(background + color + banner)
     print(terminal + back_terminal, end='\n')
 
-def color_print(color, text, background = back_terminal):
+def color_print(text, color, background = back_terminal):
     """makes colored text"""
     print(background + color + text + white + back_terminal)
 
-async def loading(color=terminal, text="loading...", time=1, background = back_terminal):
+async def loading(text = "loading...", color=terminal, time=1, background = back_terminal):
     """makes a little loading icon next to your inputed text, for however long you'd like it to wait."""
     done = False
     def animate():
