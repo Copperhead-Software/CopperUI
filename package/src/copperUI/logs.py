@@ -3,7 +3,7 @@ from random import randint
 
 load = ["mowing the grass", "writing a poem", "doing homework", "reading docs", "taking a nap"]
 fail = ["got startled and dropped it", "ran out of bubblegum", "got lost", "forgot to do the dishes", "huh?"]
-succeed = ["yay! all done", "finished", "99%..."]
+succeed = ["yay! all done", "finished", "99%...", "finishing up..."]
 
 def loading():
     """funny random loading messages"""
