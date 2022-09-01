@@ -1,6 +1,6 @@
 """the colors lib for CopperUI"""
 
-from colorama import fore as colour, Back as back
+from colorama import Fore as colour, Back as back
 
 # color variables because of course colorama's color names have to be in caps
 red = colour.RED

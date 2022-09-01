@@ -6,12 +6,9 @@ import sys # used for stdout
 import asyncio # used for app class, as well as async functions 
 from playsound import playsound # its morbin time
 from datetime import datetime # for clock function
-try:    # i don't know relative imports ok? give me a break
-    from .errors import *
-    from .colors import *
-except ImportError:
-    from errors import * 
-    from colors import *
+from .errors import *
+from .colors import *
+from .logs import *
 
 DEFAULT_FONT = 'standard' # pyfiglet banner font
 
