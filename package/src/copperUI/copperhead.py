@@ -9,22 +9,31 @@ from datetime import datetime # for clock function
 from .errors import *
 from .colors import *
 from .logs import *
+import os
 
 DEFAULT_FONT = 'standard' # pyfiglet banner font
 
-def error(text, stripped: bool = True):
-    """makes an error print"""
-    if stripped == False:
-        print(f"❌ details: {text}")
-    else:
-        print(f"❌ {text}")
+class tests():
+    def error(text, stripped: bool = True):
+        """makes an error print"""
+        if stripped == False:
+            print(f"❌ details: {text}")
+        else:
+            print(f"❌ {text}")
 
-def passed(text, stripped: bool = True):
-    """makes a pass print"""
-    if stripped == False:
-        print(f"✅ details: {text}")
+    def passed(text, stripped: bool = True):
+        """makes a pass print"""
+        if stripped == False:
+            print(f"✅ details: {text}")
+        else:
+            print(f"✅ {text}")
+
+def clearscreen():
+    """clears the screen"""
+    if os.name == 'nt':
+        os.system('cls')
     else:
-        print(f"✅ {text}")
+        os.system('clear')
 
 def prompt(text = "press enter to continue...", color = terminal,*, background = back_terminal):
     """creates a no-input continue prompt."""
@@ -45,7 +54,7 @@ def color_print(text, color, background = back_terminal):
     """makes colored text"""
     print(background + color + text + white + back_terminal)
 
-async def loading(text = "loading...", color=terminal, time=1, background = back_terminal):
+def loading(text = "loading...", color=terminal, time=1, background = back_terminal):
     """makes a little loading icon next to your inputed text, for however long you'd like it to wait."""
     done = False
     def animate():
@@ -82,7 +91,7 @@ def rainbow_print(text="colors", time=5):
     done = True
     print(terminal + back_terminal +"\r")
 
-async def clock(format=24, color = terminal, background = back_terminal):
+def clock(format=24, color = terminal, background = back_terminal):
     """creates a clock
     args:
         format: this decides if you want to print with the 12 or 24 hour time format
@@ -108,7 +117,7 @@ async def clock(format=24, color = terminal, background = back_terminal):
 class CopperApp():
     """App organization functions"""
     def run(func, persistent: bool = False, startsound: str = None):
-        """Runs the app. this has the benefit of cleaning up app structuring, such as exiting with KeyboardInterupt
+        """Runs the app. this has the benefit of cleaning up app structuring, such as exiting cleanly with KeyboardInterupt
         runs with asyncio. for single eventloop apps, use start.
         if you use run, make sure to define with async. otherwise, use start. 
         if you dont need async, start is probably your best option.
