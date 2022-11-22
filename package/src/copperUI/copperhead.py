@@ -10,6 +10,7 @@ from .errors import *
 from .colors import *
 from .logs import *
 import os
+from getpass import getpass
 
 DEFAULT_FONT = 'standard' # pyfiglet banner font
 
@@ -37,7 +38,7 @@ def clearscreen():
 
 def prompt(text = "press enter to continue...", color = terminal,*, background = back_terminal):
     """creates a no-input continue prompt."""
-    value = input(background + color + f"{text} " + terminal + back_terminal)
+    value = getpass(prompt = f"{background} {color} {text} {terminal} {back_terminal}")
     if value == "":
         return
     else:
